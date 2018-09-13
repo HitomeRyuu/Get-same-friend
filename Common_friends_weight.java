@@ -14,8 +14,8 @@ public class Common_friends_weight {
     private  List<Goods> goodsList=Lists.newArrayList(); //存放数据库搜索结果
 
     public void init() {
-        Neo4jConnection testdb = new Neo4jConnection("192.168.0.100", "7474", "neo4j", "123456");//link to database
-        String cypherProperties = "match (m:银行卡)-[r2:`交易记录`]-(n:银行卡)  return id(n),id(m) limit 1000 ";//query
+        Neo4jConnection testdb = new Neo4jConnection("localhost", "port", "neo4j", "password");//link to database
+        String cypherProperties = "match (m:person)-[r2:`friend`]-(n:person)  return id(n),id(m) limit 1000 ";//query
 
         String resultProperties = testdb.exectCypherEx(cypherProperties);// get result
         JSONObject jsonObject = JSONObject.parseObject(resultProperties);//获取json对象
